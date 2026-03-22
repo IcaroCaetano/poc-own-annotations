@@ -17,7 +17,7 @@ public class AnnotationProcessor {
             System.out.println("Class Note: " + note.value());
         }
 
-        // Fields
+        // Exemplo de metodos com Fields
         for (Field field : clazz.getDeclaredFields()) {
             if (field.isAnnotationPresent(Note.class)) {
                 Note note = field.getAnnotation(Note.class);
@@ -25,7 +25,7 @@ public class AnnotationProcessor {
             }
         }
 
-        // Methods
+        // Exemplo de metods com Reflecions
         for (Method method : clazz.getDeclaredMethods()) {
             if (method.isAnnotationPresent(Important.class)) {
                 System.out.println("Important method: " + method.getName());
