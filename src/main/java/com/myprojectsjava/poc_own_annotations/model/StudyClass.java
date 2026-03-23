@@ -9,7 +9,10 @@ public class StudyClass {
     @Note("Usuario Name Field")
     private String name;
 
-    @Important
+    @Note("Usuario Age Field")
+    private Integer age;
+
+    @Important("Teste de anotacao de metodo")
     public void execute() {
 
         System.out.println("Executing method...");

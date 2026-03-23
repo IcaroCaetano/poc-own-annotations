@@ -4,7 +4,9 @@ package com.myprojectsjava.poc_own_annotations.processor;
 import com.myprojectsjava.poc_own_annotations.annotations.Important;
 import com.myprojectsjava.poc_own_annotations.annotations.Note;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
 
 public class AnnotationProcessor {
 
@@ -28,7 +30,8 @@ public class AnnotationProcessor {
         // Exemplo de metods com Reflecions
         for (Method method : clazz.getDeclaredMethods()) {
             if (method.isAnnotationPresent(Important.class)) {
-                System.out.println("Important method: " + method.getName());
+                Important important = method.getAnnotation(Important.class);
+                System.out.println("Important method: " + method.getName() + " Method Annotation: " + important.value());
             }
         }
     }
