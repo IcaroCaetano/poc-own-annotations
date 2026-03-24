@@ -35,4 +35,9 @@ public class AnnotationProcessor {
             }
         }
     }
+
+    public static void processStudyJava(Class<?> clazz){
+        System.out.println("Processing class: " + clazz.getName());
+
+    }
 }
