@@ -1,6 +1,7 @@
 package com.myprojectsjava.poc_own_annotations.processor;
 
 
+import com.myprojectsjava.poc_own_annotations.annotations.Advice;
 import com.myprojectsjava.poc_own_annotations.annotations.Important;
 import com.myprojectsjava.poc_own_annotations.annotations.Note;
 
@@ -39,5 +40,15 @@ public class AnnotationProcessor {
     public static void processStudyJava(Class<?> clazz){
         System.out.println("Processing class: " + clazz.getName());
 
+        if (clazz.isAnnotationPresent(Advice.class)){
+            Advice advice = clazz.getAnnotation(Advice.class);
+            System.out.println("Annotation with advice value: " + advice.value());
+            System.out.println("Annotation with advice priority: " + advice.priority());
+            System.out.println("Annotation with author: " + advice.author());
+        }
+
+        for (Field field : clazz.getFields()) {
+
+        }
     }
 }
