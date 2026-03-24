@@ -47,8 +47,13 @@ public class AnnotationProcessor {
             System.out.println("Annotation with author: " + advice.author());
         }
 
-        for (Field field : clazz.getFields()) {
-
+        for (Field field : clazz.getDeclaredFields()) {
+            if (field.isAnnotationPresent(Advice.class)) {
+                Advice advice = field.getAnnotation(Advice.class);
+                System.out.println("Field: " + field.getName() + " Value: " + advice.value());
+                System.out.println("Field: " + field.getName() + " Priority: " + advice.priority());
+                System.out.println("Field: " + field.getName() + " Author: " + advice.author());
+            }
         }
     }
 }
