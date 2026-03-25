@@ -4,8 +4,11 @@ package com.myprojectsjava.poc_own_annotations.processor;
 import com.myprojectsjava.poc_own_annotations.annotations.Advice;
 import com.myprojectsjava.poc_own_annotations.annotations.Important;
 import com.myprojectsjava.poc_own_annotations.annotations.Note;
+import com.myprojectsjava.poc_own_annotations.annotations.Run;
+import com.myprojectsjava.poc_own_annotations.model.Task;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 
@@ -71,6 +74,18 @@ public class AnnotationProcessor {
 
     public static void processRunTask(Class<?> clazz) {
         System.out.println("Processing Class: " + clazz.getName());
+
+        try {
+            Object instance = Task.class.getDeclaredConstructor().newInstance();
+            for (Method method : Task.class.getDeclaredMethods()){
+                if (method.isAnnotationPresent(Run.class)){
+                    method.invoke(instance);
+                }
+            }
+
+        } catch (Exception e){
+            throw new RuntimeException("Erro ao instanciar " + clazz.getName(), e);
+        }
     }
 
 }
