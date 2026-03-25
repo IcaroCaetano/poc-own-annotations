@@ -69,8 +69,8 @@ public class AnnotationProcessor {
         }
     }
 
-    public static void processRunTask() {
-
+    public static void processRunTask(Class<?> clazz) {
+        System.out.println("Processing Class: " + clazz.getName());
     }
 
 }
