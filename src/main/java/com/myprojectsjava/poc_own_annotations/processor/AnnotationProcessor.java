@@ -86,6 +86,7 @@ public class AnnotationProcessor {
 
             for (Method method : clazz.getDeclaredMethods()){
                 if (method.isAnnotationPresent(Run.class)){
+                    // Executa esse metodo usando reflection
                     method.invoke(instance);
                 }
             }
