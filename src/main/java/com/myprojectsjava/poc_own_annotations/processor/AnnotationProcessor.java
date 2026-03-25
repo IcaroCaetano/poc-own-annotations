@@ -7,6 +7,7 @@ import com.myprojectsjava.poc_own_annotations.annotations.Note;
 import com.myprojectsjava.poc_own_annotations.annotations.Run;
 import com.myprojectsjava.poc_own_annotations.model.Task;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -76,12 +77,21 @@ public class AnnotationProcessor {
         System.out.println("Processing Class: " + clazz.getName());
 
         try {
-            Object instance = Task.class.getDeclaredConstructor().newInstance();
-            for (Method method : Task.class.getDeclaredMethods()){
+            Object instance = clazz.getDeclaredConstructor().newInstance();
+            /**
+             * Task.class - metadado da classe Task
+             * getDeclaredConstructor - busca o contrutor da classe
+             * newInstance() - Executa o construtor e cria o objeto
+             */
+
+            for (Method method : clazz.getDeclaredMethods()){
                 if (method.isAnnotationPresent(Run.class)){
                     method.invoke(instance);
                 }
             }
+
+            Constructor<Task> constructor = Task.class.getDeclaredConstructor();
+            System.out.println("Cosntructor: " + constructor.getName());
 
         } catch (Exception e){
             throw new RuntimeException("Erro ao instanciar " + clazz.getName(), e);
