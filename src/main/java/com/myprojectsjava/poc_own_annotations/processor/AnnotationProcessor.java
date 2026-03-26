@@ -1,10 +1,7 @@
 package com.myprojectsjava.poc_own_annotations.processor;
 
 
-import com.myprojectsjava.poc_own_annotations.annotations.Advice;
-import com.myprojectsjava.poc_own_annotations.annotations.Important;
-import com.myprojectsjava.poc_own_annotations.annotations.Note;
-import com.myprojectsjava.poc_own_annotations.annotations.Run;
+import com.myprojectsjava.poc_own_annotations.annotations.*;
 import com.myprojectsjava.poc_own_annotations.model.Task;
 
 import java.lang.reflect.Constructor;
@@ -105,7 +102,14 @@ public class AnnotationProcessor {
 
             for (Field field : instance.getClass().getDeclaredFields()){
                 field.setAccessible(true);
-
+                if (field.isAnnotationPresent(NotNull.class)){
+                    Object value = field.get(instance);
+                    if (value != null) {
+                        System.out.println("Value is: " + value.getClass().getName());
+                    } else {
+                        throw new RuntimeException(field.getName() + "is null");
+                    }
+                }
             }
         } catch (Exception e) {
             throw new RuntimeException("Erro ao instanciar " + clazz.getName(), e);
