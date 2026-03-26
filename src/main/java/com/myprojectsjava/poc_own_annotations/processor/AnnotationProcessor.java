@@ -99,4 +99,18 @@ public class AnnotationProcessor {
         }
     }
 
+    public static void processValidation(Class<?> clazz) {
+        try {
+            Object instance = clazz.getDeclaredConstructor().newInstance();
+
+            for (Field field : instance.getClass().getDeclaredFields()){
+                field.setAccessible(true);
+
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao instanciar " + clazz.getName(), e);
+        }
+    }
+
+
 }
