@@ -8,6 +8,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class AnnotationProcessor {
@@ -99,6 +101,7 @@ public class AnnotationProcessor {
     public static void processValidation(Class<?> clazz) {
         try {
             Object instance = clazz.getDeclaredConstructor().newInstance();
+            List<String> errors = new ArrayList<>();
 
             for (Field field : instance.getClass().getDeclaredFields()){
                 field.setAccessible(true);
@@ -107,7 +110,7 @@ public class AnnotationProcessor {
                     if (value != null) {
                         System.out.println("Value is: " + value.getClass().getName());
                     } else {
-                        throw new RuntimeException(field.getName() + "is null");
+                        errors.add(field.getName() + "must not be null");
                     }
                 }
             }
