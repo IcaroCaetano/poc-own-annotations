@@ -10,4 +10,7 @@ public class StudySpring {
 
     @MaxLength(10)
     private String nickname;
+
+    public StudySpring(String name, String nickname) {
+    }
 }

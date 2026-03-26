@@ -2,6 +2,7 @@ package com.myprojectsjava.poc_own_annotations.processor;
 
 
 import com.myprojectsjava.poc_own_annotations.annotations.*;
+import com.myprojectsjava.poc_own_annotations.model.StudySpring;
 import com.myprojectsjava.poc_own_annotations.model.Task;
 
 import java.lang.reflect.Constructor;
@@ -105,13 +106,27 @@ public class AnnotationProcessor {
 
             for (Field field : instance.getClass().getDeclaredFields()){
                 field.setAccessible(true);
-                if (field.isAnnotationPresent(NotNull.class)){
-                    Object value = field.get(instance);
-                    if (value != null) {
-                        System.out.println("Value is: " + value.getClass().getName());
-                    } else {
+                Object value = field.get(instance);
+
+                if (field.isAnnotationPresent(NotNull.class)) {
+                    if (value == null) {
                         errors.add(field.getName() + "must not be null");
                     }
+                }
+
+                if (field.isAnnotationPresent(MaxLength.class)) {
+                    MaxLength maxLength = field.getAnnotation(MaxLength.class);
+
+                    if (maxLength != null && value instanceof String srt){
+                        if (srt.length() > maxLength.value()){
+                            errors.add(field.getName() + " exceeds max length of " + maxLength.value());
+                        }
+                    }
+                }
+
+                StudySpring studySpring = new StudySpring(null, "singleton");
+                if (!errors.isEmpty()) {
+                    errors.forEach(System.out::println);
                 }
             }
         } catch (Exception e) {

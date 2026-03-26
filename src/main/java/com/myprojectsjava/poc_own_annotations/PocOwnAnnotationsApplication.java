@@ -2,6 +2,7 @@ package com.myprojectsjava.poc_own_annotations;
 
 import com.myprojectsjava.poc_own_annotations.model.StudyClass;
 import com.myprojectsjava.poc_own_annotations.model.StudyJava;
+import com.myprojectsjava.poc_own_annotations.model.StudySpring;
 import com.myprojectsjava.poc_own_annotations.model.Task;
 import com.myprojectsjava.poc_own_annotations.processor.AnnotationProcessor;
 import org.springframework.boot.SpringApplication;
@@ -17,6 +18,8 @@ public class PocOwnAnnotationsApplication {
 		AnnotationProcessor.processStudyJava(StudyJava.class);
 		System.out.println();
 		AnnotationProcessor.processRunTask(Task.class);
+		System.out.println();
+		AnnotationProcessor.processValidation(StudySpring.class);
 	}
 
 }
