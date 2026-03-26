@@ -101,16 +101,17 @@ public class AnnotationProcessor {
 
     public static void processValidation(Class<?> clazz) {
         try {
-            Object instance = clazz.getDeclaredConstructor().newInstance();
-            List<String> errors = new ArrayList<>();
 
-            for (Field field : instance.getClass().getDeclaredFields()){
+            List<String> errors = new ArrayList<>();
+            Object instance = clazz.getDeclaredConstructor().newInstance();
+
+            for (Field field : clazz.getDeclaredFields()){
                 field.setAccessible(true);
                 Object value = field.get(instance);
 
                 if (field.isAnnotationPresent(NotNull.class)) {
                     if (value == null) {
-                        errors.add(field.getName() + "must not be null");
+                        errors.add(field.getName() + " must not be null");
                     }
                 }
 
