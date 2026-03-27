@@ -7,7 +7,6 @@ import com.myprojectsjava.poc_own_annotations.model.Task;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -104,6 +103,8 @@ public class AnnotationProcessor {
         validator(student1);
         StudySpring student2 =  new StudySpring("Annotation", "singleton is a design partner");
         validator(student2);
+        StudySpring student3 =  new StudySpring("Annotations can be defined", "test");
+        validator(student3);
     }
 
 

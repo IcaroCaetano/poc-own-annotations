@@ -6,8 +6,10 @@ import com.myprojectsjava.poc_own_annotations.annotations.NotNull;
 public class StudySpring {
 
     @NotNull
+    @MaxLength(8)
     private String name;
 
+    @NotNull
     @MaxLength(10)
     private String nickname;
 
