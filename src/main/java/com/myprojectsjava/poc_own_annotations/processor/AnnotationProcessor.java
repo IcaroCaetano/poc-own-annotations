@@ -107,6 +107,11 @@ public class AnnotationProcessor {
         validator(student3);
     }
 
+    public static void processInherit(Class<?> clazz) {
+        Activate activate = clazz.getAnnotation(Activate.class);
+        System.out.println("Anotacao herdada: " + activate.value());
+    }
+
 
     private static void validator(Object object) {
         Class<?> clazz = object.getClass();
