@@ -99,15 +99,21 @@ public class AnnotationProcessor {
         }
     }
 
-    public static void processValidation(Class<?> clazz) {
-        try {
+    public static void processValidation(){
 
+    }
+
+
+    private void validator(Object object) {
+        Class<?> clazz = object.getClass();
+
+        try {
             List<String> errors = new ArrayList<>();
-            Object instance = clazz.getDeclaredConstructor().newInstance();
+
 
             for (Field field : clazz.getDeclaredFields()){
                 field.setAccessible(true);
-                Object value = field.get(instance);
+                Object value = field.get(object);
 
                 if (field.isAnnotationPresent(NotNull.class)) {
                     if (value == null) {
@@ -125,7 +131,10 @@ public class AnnotationProcessor {
                     }
                 }
 
-                StudySpring studySpring = new StudySpring(null, "singleton");
+                new StudySpring(null, "singleton");
+                System.out.println();
+                new StudySpring("Annotation", "singleton is a design partner");
+
                 if (!errors.isEmpty()) {
                     errors.forEach(System.out::println);
                 }
