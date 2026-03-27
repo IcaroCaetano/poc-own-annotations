@@ -19,7 +19,7 @@ public class PocOwnAnnotationsApplication {
 		System.out.println();
 		AnnotationProcessor.processRunTask(Task.class);
 		System.out.println();
-		AnnotationProcessor.processValidation(StudySpring.class);
+		AnnotationProcessor.processValidation();
 	}
 
 }

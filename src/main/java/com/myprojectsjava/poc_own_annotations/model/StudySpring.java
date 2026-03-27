@@ -17,4 +17,8 @@ public class StudySpring {
          this.name = name;
          this.nickname = nickname;
     }
+
+    public String toString() {
+        return "StudySpring{name=" + name + ", nickname=" + nickname + "}";
+    }
 }
