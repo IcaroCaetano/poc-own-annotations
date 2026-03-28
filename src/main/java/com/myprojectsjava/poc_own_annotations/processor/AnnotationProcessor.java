@@ -136,6 +136,13 @@ public class AnnotationProcessor {
         System.out.println(advice.value());
     }
 
+    public static void processRepeatableAnnotation(Class<?> clazz) {
+        Tag[] tags = clazz.getAnnotationsByType(Tag.class);
+        for (Tag tag : tags) {
+            System.out.println(tag.value());
+        }
+    }
+
 
     private static void validator(Object object) {
         Class<?> clazz = object.getClass();
