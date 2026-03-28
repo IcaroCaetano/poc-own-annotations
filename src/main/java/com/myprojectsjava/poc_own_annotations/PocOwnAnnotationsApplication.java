@@ -21,6 +21,8 @@ public class PocOwnAnnotationsApplication {
 		AnnotationProcessor.processInherit(ExtendedInstruction.class);
 		System.out.println();
 		AnnotationProcessor.processMetaAnnotation(Payment.class);
+		System.out.println();
+		AnnotationProcessor.processRepeatableAnnotation(ReadingBook.class);
 	}
 
 }
