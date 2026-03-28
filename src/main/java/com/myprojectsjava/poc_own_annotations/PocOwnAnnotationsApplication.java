@@ -19,6 +19,8 @@ public class PocOwnAnnotationsApplication {
 		AnnotationProcessor.processValidation();
 		System.out.println();
 		AnnotationProcessor.processInherit(ExtendedInstruction.class);
+		System.out.println();
+		AnnotationProcessor.processMetaAnnotation(Payment.class);
 	}
 
 }

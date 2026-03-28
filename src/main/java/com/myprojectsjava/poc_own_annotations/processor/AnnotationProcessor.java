@@ -112,6 +112,25 @@ public class AnnotationProcessor {
         System.out.println("Anotacao herdada: " + activate.value());
     }
 
+    public static void processMetaAnnotation(Class<?> clazz) {
+        Note note = null;
+
+        System.out.println("Using Meta-Annotation");
+
+        // Forma direta
+        if (clazz.isAnnotationPresent(Note.class)) {
+            note = clazz.getAnnotation(Note.class);
+        }
+
+        // Meta-Annotation
+        for (var annotation : clazz.getAnnotations()) {
+            if (annotation.annotationType().isAnnotationPresent(Note.class)) {
+                note = annotation.annotationType().getAnnotation(Note.class);
+            }
+        }
+        System.out.println(note.value());
+    }
+
 
     private static void validator(Object object) {
         Class<?> clazz = object.getClass();
