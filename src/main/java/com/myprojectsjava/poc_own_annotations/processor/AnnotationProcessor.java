@@ -114,6 +114,7 @@ public class AnnotationProcessor {
 
     public static void processMetaAnnotation(Class<?> clazz) {
         Note note = null;
+        Advice advice = null;
 
         System.out.println("Using Meta-Annotation");
 
@@ -127,8 +128,12 @@ public class AnnotationProcessor {
             if (annotation.annotationType().isAnnotationPresent(Note.class)) {
                 note = annotation.annotationType().getAnnotation(Note.class);
             }
+            if (annotation.annotationType().isAnnotationPresent(Advice.class)){
+                advice = annotation.annotationType().getAnnotation(Advice.class);
+            }
         }
         System.out.println(note.value());
+        System.out.println(advice.value());
     }
 
 
