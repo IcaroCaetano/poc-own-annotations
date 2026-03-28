@@ -1,0 +1,13 @@
+package com.myprojectsjava.poc_own_annotations.annotations;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+@Note("Classe crítica")
+@Advice(value = "Study", priority = 2, author = "Icaro")
+public @interface Critical {
+}
