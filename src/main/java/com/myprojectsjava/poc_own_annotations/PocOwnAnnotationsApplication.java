@@ -23,6 +23,8 @@ public class PocOwnAnnotationsApplication {
 		AnnotationProcessor.processMetaAnnotation(Payment.class);
 		System.out.println();
 		AnnotationProcessor.processRepeatableAnnotation(ReadingBook.class);
+		System.out.println();
+		AnnotationProcessor.processParamAnnotation(Activity.class);
 	}
 
 }
