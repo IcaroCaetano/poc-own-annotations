@@ -27,3 +27,41 @@ Created custom annotations such as:
 - @NotNull, @MaxLength → validation rules
 - @Param → bind method parameters
 
+## 🚀 Features Implemented
+
+### 2️⃣ Reflection Basics
+
+- Access classes, fields, and methods dynamically
+- Instantiate objects at runtime:
+
+````java
+clazz.getDeclaredConstructor().newInstance();
+````
+
+- Execute methods dynamically:
+
+````java
+method.invoke(instance);
+````
+
+
+### 3️⃣ Field Validation Engine
+
+Implemented a simple validation system using annotations:
+
+- @NotNull
+
+- @MaxLength(10)
+
+private String name;
+
+✔ Validates:
+
+Null values
+String length
+
+✔ Uses:
+
+Field
+setAccessible(true)
+Annotation processing
