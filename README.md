@@ -123,3 +123,43 @@ public @interface Critical {}
 ✔ Built logic to resolve meta-annotations manually
 
 
+### 9️⃣ Annotation Inheritance
+
+Used:
+
+@Inherited
+
+✔ Allowed subclasses to inherit annotations from parent classes
+
+### 🔟 Modern Java Features
+
+Used Java 21 capabilities like:
+
+Pattern Matching:
+if (value instanceof String str)
+
+✔ Cleaner and safer type handling
+
+## 🧠 Key Concepts Learned
+
+- Reflection API (Class, Field, Method, Parameter)
+- Runtime annotation processing
+- Dynamic method invocation
+- Metadata-driven design
+- Separation of concerns
+- Mini-framework architecture
+
+#### ⚠️ Important Notes
+
+- Reflection bypasses encapsulation (setAccessible(true))
+- Can impact performance if overused
+- Should be used carefully in production systems
+
+
+### 🎯 Conclusion
+
+This POC demonstrates how to:
+
+- Build dynamic and extensible systems
+- Use annotations to drive behavior
+- Recreate core ideas behind major Java frameworks
