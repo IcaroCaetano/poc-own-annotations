@@ -5,11 +5,10 @@ import com.myprojectsjava.poc_own_annotations.annotations.*;
 import com.myprojectsjava.poc_own_annotations.model.StudySpring;
 import com.myprojectsjava.poc_own_annotations.model.Task;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
+import java.lang.reflect.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -155,6 +154,32 @@ public class AnnotationProcessor {
                     System.out.println("Param name: " + param.value());
                 }
             }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void processOrderExecution(Class<?> clazz) {
+        try {
+            Object instance = clazz.getDeclaredConstructor().newInstance();
+            Method[] methods = clazz.getDeclaredMethods();
+
+            Arrays.stream(methods)
+                    .filter(method -> method.isAnnotationPresent(Run.class))
+                    .sorted(Comparator.comparing((method -> {
+                        Order order = method.getAnnotation(Order.class);
+                        return (order != null) ? order.value() : Integer.MAX_VALUE;
+                    })))
+
+                    .forEach(method -> {
+                        try {
+                            method.setAccessible(true);
+                            method.invoke(instance);
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
