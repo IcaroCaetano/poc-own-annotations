@@ -75,3 +75,18 @@ public void execute() {}
 
 ✔ Finds methods with @Run
 ✔ Executes them automatically via Reflection
+
+### 5️⃣ Execution Order with @Order
+
+Controlled method execution order:
+
+@Run
+@Order(1)
+public void job1() {}
+
+@Run
+@Order(2)
+public void job2() {}
+
+✔ Sorted execution using Comparator
+✔ Methods without order run last
