@@ -65,3 +65,13 @@ String length
 Field
 setAccessible(true)
 Annotation processing
+
+### 4️⃣ Method Execution Engine
+
+Created a mini execution engine:
+
+- @Run
+public void execute() {}
+
+✔ Finds methods with @Run
+✔ Executes them automatically via Reflection
