@@ -8,6 +8,7 @@ import com.myprojectsjava.poc_own_annotations.model.Task;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -140,6 +141,22 @@ public class AnnotationProcessor {
         Tag[] tags = clazz.getAnnotationsByType(Tag.class);
         for (Tag tag : tags) {
             System.out.println(tag.value());
+        }
+    }
+
+    public static void processParamAnnotation(Class<?> clazz){
+        try {
+            Method method = clazz.getDeclaredMethod("execute", String.class, String.class);
+            Parameter[] parameters = method.getParameters();
+
+            for (Parameter parameter : parameters) {
+                if (parameter.isAnnotationPresent(Param.class)) {
+                    Param param = parameter.getAnnotation(Param.class);
+                    System.out.println("Param name: " + param.value());
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
