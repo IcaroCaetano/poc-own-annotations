@@ -90,3 +90,36 @@ public void job2() {}
 
 ✔ Sorted execution using Comparator
 ✔ Methods without order run last
+
+### 6️⃣ Parameter Annotations
+
+Bound external data to method parameters:
+
+public void execute(@Param("userId") String id) {}
+
+✔ Mapped values dynamically from a Map
+✔ Built a mini argument resolver
+
+### 7️⃣ Repeatable Annotations
+
+Enabled multiple annotations of the same type:
+
+@Tag("java")
+@Tag("reflection")
+
+✔ Implemented using @Repeatable
+✔ Processed with:
+
+getAnnotationsByType(Tag.class);
+
+### 8️⃣ Meta-Annotations
+
+Created composed annotations:
+
+@Note("Critical class")
+@Important
+public @interface Critical {}
+
+✔ Built logic to resolve meta-annotations manually
+
+
