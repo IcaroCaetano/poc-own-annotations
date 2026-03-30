@@ -25,6 +25,8 @@ public class PocOwnAnnotationsApplication {
 		AnnotationProcessor.processRepeatableAnnotation(ReadingBook.class);
 		System.out.println();
 		AnnotationProcessor.processParamAnnotation(Activity.class);
+		System.out.println();
+		AnnotationProcessor.processOrderExecution(Jobs.class);
 	}
 
 }

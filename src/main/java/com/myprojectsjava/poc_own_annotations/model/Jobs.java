@@ -3,7 +3,7 @@ package com.myprojectsjava.poc_own_annotations.model;
 import com.myprojectsjava.poc_own_annotations.annotations.Order;
 import com.myprojectsjava.poc_own_annotations.annotations.Run;
 
-class Jobs {
+public class Jobs {
 
     @Run
     @Order(2)
